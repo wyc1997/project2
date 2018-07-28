@@ -7,6 +7,8 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
+channels = []
+
 
 @app.route("/")
 def index():
