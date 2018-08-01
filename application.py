@@ -20,7 +20,8 @@ def index():
 @socketio.on("connect")
 def initialization():
     emit("initChannelList", {"existingChannels": channels}, broadcast=True)
-    emit("initChannelContent", {"initChannel": channelContent[current_channel]}, broadcast=True)
+    if current_channel != '':
+        emit("initChannelContent", {"initChannel": channelContent[current_channel]}, broadcast=True)
 
 
 @socketio.on("submit channel")
@@ -36,7 +37,7 @@ def ch_channel(data):
     if current_channel not in channelContent.keys():
         channelContent[current_channel] = []
     emit("initChannelContent", {"initChannel": channelContent[current_channel]}, broadcast=True)
-    
+
 
 @socketio.on("submit text")
 def addTextToChannel(data):
