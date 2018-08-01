@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = "ch";
         li.onclick = function() {
             localStorage.setItem('current_channel', this.innerHTML);
-            socket.emit('change channel', {'current_channel': localStorage.getItem('current_channel')});
+            socket.emit('change channel', {'current_channel': this.innerHTML});
             document.querySelector('#channel_title').innerHTML = `Channel: ${localStorage.getItem('current_channel')}`;
         };
         li.innerHTML = data.newChan;
@@ -38,8 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     socket.on('initChannelList', data => {
+        let childs = document.querySelector('#channel_list').childNodes;
+        for (let i = childs.length - 1; i >= 0; i--) {
+            document.querySelector('#channel_list').removeChild(childs[i]);
+        }
         let exi_channels = data.existingChannels;
-        for (var i = 0; i < exi_channels.length; i++) {
+        for (let i = 0; i < exi_channels.length; i++) {
             const li = document.createElement('li');
             li.innerHTML = exi_channels[i];
             li.className = "ch";
@@ -53,8 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     socket.on('initChannelContent', data => {
+        let childs = document.querySelector('#messages').childNodes;
+        for (let i = childs.length - 1; i >= 0; i--) {
+            document.querySelector('#messages').removeChild(childs[i]);
+        }
         let curChannelData = data.initChannel;
-        for (var i = 0; i < curChannelData.length; i++) {
+        for (let i = 0; i < curChannelData.length; i++) {
             const li = document.createElement("li");
             li.innerHTML = `${curChannelData[i].text} by ${curChannelData[i].user}, at ${curChannelData[i].time}`;
             document.querySelector("#messages").append(li);
@@ -76,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#input_channel').value = '';
             return false;
         }
+
 
     })
 
