@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = "ch";
         li.onclick = function() {
             localStorage.setItem('current_channel', this.innerHTML);
-            socket.emit('change channel', {'current_channel': localStorage.getItem('current_channel')})
+            socket.emit('change channel', {'current_channel': localStorage.getItem('current_channel')});
             document.querySelector('#channel_title').innerHTML = `Channel: ${localStorage.getItem('current_channel')}`;
         };
         li.innerHTML = data.newChan;
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         for (var i = 0; i < exi_channels.length; i++) {
             const li = document.createElement('li');
             li.innerHTML = exi_channels[i];
-            li.className = "ch"
+            li.className = "ch";
             li.onclick = function() {
                 localStorage.setItem('current_channel', this.innerHTML);
-                socket.emit('change channel', {'current_channel': localStorage.getItem('current_channel')})
+                socket.emit('change channel', {'current_channel': localStorage.getItem('current_channel')});
                 document.querySelector('#channel_title').innerHTML = `Channel: ${localStorage.getItem('current_channel')}`;
             };
             document.querySelector('#channel_list').append(li);
@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('connect', () => {
         document.querySelector('#text_form').onsubmit = () => {
             const text = document.querySelector('#text_input').value;
-            var current_time = new Date()
+            var current_time = new Date();
             socket.emit('submit text', {'text': text, 'current_channel': localStorage.getItem('current_channel'),
                                         'current_user': localStorage.getItem('username'), 'current_time': current_time})
-            text = '';
+            document.querySelector('#text_input').value = '';
             return false;
         }
 
