@@ -23,6 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#new_user').value = '';
         return false;
     }
+    const inputList = ['new_user', 'input_channel', 'text_input'];
+
+    for(let i = 0; i < inputList.length; i++) {
+        document.querySelector(`#${inputList[i]}_button`).disabled = true;
+        document.querySelector(`#${inputList[i]}`).onkeyup = () => {
+            if (document.querySelector(`#${inputList[i]}`).value.length > 0) {
+                document.querySelector(`#${inputList[i]}_button`).disabled = false;
+            }
+            else {
+                document.querySelector(`#${inputList[i]}_button`).disabled = true;
+            }
+        }
+    }
+
+
 
 
     socket.on('updateChannelList', data => {

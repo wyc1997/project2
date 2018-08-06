@@ -1,0 +1,39 @@
+ul, li{
+  list-style: none;
+}
+.ch {
+   padding: 3px;
+   border: 2px solid black;
+   margin: 10px;
+   list-style: none;
+}
+
+div, form {
+  margin: 10px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  background-color: #bd3d3d
+}
+
+#message_bloc {
+  border: 3px solid black;
+}
+
+#messagediv {
+  background-color: #74c958;
+}
+
+#channeldiv {
+  background-color: #61bfeb;
+}
+
+#userbloc {
+  background-color: #bd3d3d;
+}
+input {
+  background-color: inherit;
+  border: 1px solid black;
+}
