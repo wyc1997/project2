@@ -1,21 +1,21 @@
 ul, li{
   list-style: none;
+  align-content: center;
 }
 .ch {
-   padding: 3px;
    border: 2px solid black;
-   margin: 10px;
    list-style: none;
 }
 
 div, form {
-  margin: 10px;
   text-align: center;
 }
 
 h1 {
   text-align: center;
-  background-color: #bd3d3d
+  background-color: #bd3d3d;
+  width: 50%;
+
 }
 
 #message_bloc {
@@ -24,14 +24,22 @@ h1 {
 
 #messagediv {
   background-color: #74c958;
+  float: left;
+  width: 25%;
 }
 
 #channeldiv {
   background-color: #61bfeb;
+  float: left;
+  width: 25%;
+  text-align: center;
 }
 
 #userbloc {
   background-color: #bd3d3d;
+  width: 50%;
+  height: 100px;
+
 }
 input {
   background-color: inherit;
